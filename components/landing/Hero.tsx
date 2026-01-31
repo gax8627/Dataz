@@ -6,6 +6,15 @@ import Link from "next/link"
 import { ArrowRight, Database, TrendingUp, Layers } from "lucide-react"
 import { useRef, useState } from "react"
 
+interface Asset {
+  name: string
+  price: string
+  vacancy: string
+  available: string
+  x: number
+  y: number
+}
+
 export function Hero() {
   const ref = useRef(null)
   
@@ -35,9 +44,9 @@ export function Hero() {
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   // Market Simulator State
-  const [hoveredAsset, setHoveredAsset] = useState<any>(null)
+  const [hoveredAsset, setHoveredAsset] = useState<Asset | null>(null)
 
-  const markets = {
+  const markets: Record<string, Asset[]> = {
     industrial: [
       { name: "Monterrey", price: "$6.45", vacancy: "2.1%", available: "450k m²", x: 40, y: 30 },
       { name: "Tijuana", price: "$7.20", vacancy: "1.5%", available: "120k m²", x: 20, y: 20 },
