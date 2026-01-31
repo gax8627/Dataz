@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="space-y-4">
-                <h3 className="font-bold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-500">
+                <h3 className="font-bold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-500">
                     Dataz.
                 </h3>
                 <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
