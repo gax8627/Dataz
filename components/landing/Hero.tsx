@@ -155,17 +155,17 @@ export function Hero() {
         >
             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent blur-[100px] -z-10 opacity-50" />
             
-            <div className="relative rounded-t-3xl border border-white/20 bg-black/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center border-b-0 transform-gpu transition-transform duration-500 hover:scale-[1.01]">
+            <div className="relative rounded-t-3xl border border-border/50 bg-white/20 dark:bg-black/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center border-b-0 transform-gpu transition-transform duration-500 hover:scale-[1.01]">
                 
                 {/* Advanced Simulated 3D Interface */}
                 <div className="absolute inset-0 flex items-center justify-center p-8">
                     <div className="relative w-full h-full max-w-4xl mx-auto">
                         {/* Simulated Grid Map */}
-                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+                        <div className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(currentColor_1px,transparent_1px)] [background-size:20px_20px] text-foreground" />
                         
                         {/* Interactive Market Selector Overlay */}
                         <div className="absolute top-4 left-4 z-30 flex gap-2">
-                            <div className="glass-card px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase border-primary/20 text-primary flex items-center gap-2">
+                            <div className="glass-card px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase border-primary/20 text-primary flex items-center gap-2 bg-white/60 dark:bg-black/60">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                                 LIVE: INDUSTRIAL - MÉXICO
                             </div>
@@ -200,21 +200,21 @@ export function Hero() {
                                     <motion.div 
                                         initial={{ opacity: 0, y: 10, scale: 0.9 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        className="absolute bottom-full mb-4 glass-card p-4 rounded-xl min-w-[180px] text-left z-50 pointer-events-none"
+                                        className="absolute bottom-full mb-4 glass-card p-4 rounded-xl min-w-[180px] text-left z-50 pointer-events-none bg-background/95 border-primary/20"
                                     >
                                         <p className="text-xs font-bold text-primary mb-1 uppercase tracking-tighter">{asset.name}</p>
                                         <div className="space-y-1">
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground">Asking Rent:</span>
-                                                <span className="font-mono text-white">{asset.price} USD</span>
+                                                <span className="text-muted-foreground font-medium">Asking Rent:</span>
+                                                <span className="font-mono text-foreground">{asset.price} USD</span>
                                             </div>
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground">Disponibilidad:</span>
-                                                <span className="font-mono text-white">{asset.available}</span>
+                                                <span className="text-muted-foreground font-medium">Disponibilidad:</span>
+                                                <span className="font-mono text-foreground">{asset.available}</span>
                                             </div>
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground">Vacancia:</span>
-                                                <span className="font-mono text-cyan-400">{asset.vacancy}</span>
+                                                <span className="text-muted-foreground font-medium">Vacancia:</span>
+                                                <span className="font-mono text-primary">{asset.vacancy}</span>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -223,7 +223,7 @@ export function Hero() {
                         ))}
 
                         {/* Connection Lines (Simulated - Linking hotspots) */}
-                        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
+                        <svg className="absolute inset-0 w-full h-full opacity-10 dark:opacity-20 pointer-events-none">
                             <motion.path 
                                 d="M 400 300 Q 500 200 450 450 T 300 150"
                                 fill="none"
@@ -241,17 +241,21 @@ export function Hero() {
                             </defs>
                         </svg>
 
-                        <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 p-8 pointer-events-none">
+                        <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-sm tracking-widest uppercase bg-transparent p-8 pointer-events-none">
                              <div className="text-center space-y-6">
                                   <div className="relative">
-                                      <div className="w-32 h-32 rounded-full border-4 border-primary/20 mx-auto flex items-center justify-center animate-spin-slow">
-                                          <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_rgba(99,102,241,0.8)]" />
+                                      {/* Radar Sync Animation (Instead of Loader) */}
+                                      <div className="w-48 h-48 rounded-full border border-primary/10 mx-auto flex items-center justify-center relative">
+                                          <div className="absolute inset-0 rounded-full border border-primary/20 animate-ping opacity-20" />
+                                          <div className="absolute inset-4 rounded-full border border-primary/20 animate-ping animation-delay-2000 opacity-10" />
+                                          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                                              <div className="w-3 h-3 rounded-full bg-primary shadow-[0_0_20px_rgba(99,102,241,1)]" />
+                                          </div>
                                       </div>
-                                      <div className="absolute inset-0 w-32 h-32 rounded-full border-t-4 border-primary mx-auto animate-spin" />
                                   </div>
-                                  <div className="space-y-2">
-                                    <p className="font-bold text-lg text-white">Market Intelligence Engine</p>
-                                    <p className="text-[10px] text-primary animate-pulse">Syncing with 3.2M m² of Industrial Inventory</p>
+                                  <div className="space-y-1">
+                                    <p className="font-bold text-lg text-foreground tracking-tight normal-case">Mercado en Tiempo Real</p>
+                                    <p className="text-[10px] text-primary/80 font-semibold">ACTIVO: 2,491 activos monitoreados</p>
                                   </div>
                              </div>
                         </div>
