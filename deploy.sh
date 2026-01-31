@@ -1,5 +1,5 @@
 #!/bin/bash
 git add .
-git commit -m "Fix final ESLint error in admin page"
+git commit -m "Fix: Add prisma generate to build script for Vercel"
 git push origin main
-echo "Final fix pushed!"
+echo "Prisma fix pushed!"
