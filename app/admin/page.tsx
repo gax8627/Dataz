@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
-import { redirect } from "next/navigation"
+// import { redirect } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
@@ -75,6 +75,7 @@ export default async function AdminDashboard() {
                 </TableHeader>
                 <TableBody>
                     {users.map((user: any) => (
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         <TableRow key={user.id}>
                             <TableCell>{user.name}</TableCell>
                             <TableCell>{user.email}</TableCell>

@@ -21,6 +21,7 @@ export async function POST(req: Request) {
 
     // Ensure session.user has ID (requires Auth callback config in lib/auth which we added)
     // If not, fetch user by email
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let userId = (session.user as any).id
     if (!userId) {
         const user = await prisma.user.findUnique({ where: { email: session.user.email } })

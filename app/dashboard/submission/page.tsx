@@ -6,9 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+// import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+// import { Input } from "@/components/ui/input"
 import { useDropzone } from "react-dropzone"
 import { toast } from "sonner"
 import { Cloud, FileText, Loader2, X } from "lucide-react"
@@ -60,7 +60,7 @@ export default function SubmissionPage() {
         
         toast.success("Entrega enviada correctamente")
         router.push("/dashboard")
-    } catch (error) {
+    } catch {
         toast.error("Error al enviar entrega")
     } finally {
         setIsLoading(false)
