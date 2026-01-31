@@ -106,7 +106,7 @@ export function Features() {
                     {feature.icon}
                </div>
 
-              <div className="mb-6 rounded-2xl bg-gradient-to-br from-primary/10 to-orange-500/10 w-14 h-14 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
+              <div className="mb-6 rounded-2xl bg-gradient-to-br from-primary/10 to-cyan-500/10 w-14 h-14 flex items-center justify-center border border-primary/20 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
               

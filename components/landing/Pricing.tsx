@@ -59,7 +59,7 @@ export function Pricing() {
         {/* Pro Plan */}
         <Card className="flex flex-col glass-card border-primary/50 shadow-2xl relative scale-105 z-10 bg-white/60 dark:bg-black/60">
             <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                <div className="bg-gradient-to-r from-primary to-orange-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg">POPULAR</div>
+                <div className="bg-gradient-to-r from-primary to-blue-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-lg">POPULAR</div>
             </div>
             <CardHeader className="pt-10">
                 <CardTitle className="text-xl text-primary">Professional</CardTitle>

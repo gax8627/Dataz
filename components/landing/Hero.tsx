@@ -48,9 +48,9 @@ export function Hero() {
         style={{ y: yBackground, x: useTransform(mouseXSpring, [-0.5, 0.5], [30, -30]), opacity: 0.6 }}
         className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
       >
-        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob" />
-        <div className="absolute top-[20%] right-[20%] w-[400px] h-[400px] bg-purple-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000" />
-        <div className="absolute bottom-[20%] left-[30%] w-[600px] h-[600px] bg-orange-400/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000" />
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] bg-primary/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob" />
+        <div className="absolute top-[20%] right-[20%] w-[400px] h-[400px] bg-cyan-500/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000" />
+        <div className="absolute bottom-[20%] left-[30%] w-[600px] h-[600px] bg-blue-400/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000" />
       </motion.div>
 
       {/* Futuristic Grid Overlay */}
@@ -64,7 +64,7 @@ export function Hero() {
            initial={{ opacity: 0, y: -20, scale: 0.9 }}
            animate={{ opacity: 1, y: 0, scale: 1 }}
            transition={{ duration: 0.7, ease: "easeOut" }}
-           className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium border border-primary/20 bg-primary/5 text-primary mb-8 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(255,107,53,0.3)]"
+           className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium border border-primary/20 bg-primary/5 text-primary mb-8 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(99,102,241,0.3)]"
         >
           <Database className="mr-2 h-4 w-4" />
           La plataforma #1 en México
@@ -107,14 +107,14 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-6 w-full justify-center mb-24 relative z-20"
         >
           <Link href="#demo">
-            <Button size="lg" className="group w-full sm:w-auto h-16 px-10 text-lg rounded-full shadow-[0_0_40px_-10px_rgba(255,107,53,0.5)] hover:shadow-[0_0_60px_-10px_rgba(255,107,53,0.7)] transition-all duration-300 bg-gradient-to-r from-primary to-orange-600 border-0">
+            <Button size="lg" className="group w-full sm:w-auto h-16 px-10 text-lg rounded-full shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] hover:shadow-[0_0_60px_-10px_rgba(99,102,241,0.7)] transition-all duration-300 bg-gradient-to-r from-primary to-blue-600 border-0">
               Solicitar Demo
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
           <Link href="#features">
             <Button variant="outline" size="lg" className="w-full sm:w-auto h-16 px-10 text-lg rounded-full backdrop-blur-md border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
-              Ver Demo en Vivo
+              Explorar Mapa 3D
             </Button>
           </Link>
         </motion.div>
@@ -129,13 +129,70 @@ export function Hero() {
             <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent blur-[100px] -z-10 opacity-50" />
             
             <div className="relative rounded-t-3xl border border-white/20 bg-black/40 backdrop-blur-2xl shadow-2xl overflow-hidden min-h-[400px] md:min-h-[600px] flex items-center justify-center border-b-0 transform-gpu transition-transform duration-500 hover:scale-[1.01]">
-                {/* Simulated UI/Dashboard elements would go here - possibly an Image or a Video */}
-                <div className="absolute inset-0 flex items-center justify-center text-muted-foreground/30 font-mono tracking-widest uppercase">
-                    <div className="text-center space-y-4">
-                         <div className="w-24 h-24 rounded-full border-4 border-white/10 mx-auto flex items-center justify-center animate-pulse">
-                             <div className="w-4 h-4 rounded-full bg-primary" />
-                         </div>
-                         <p>3D Interactive Map Loading...</p>
+                
+                {/* Advanced Simulated 3D Interface */}
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                    <div className="relative w-full h-full max-w-4xl mx-auto">
+                        {/* Simulated Grid Map */}
+                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
+                        
+                        {/* Floating Data Nodes */}
+                        {[...Array(6)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ 
+                                    opacity: [0.3, 0.6, 0.3], 
+                                    scale: [1, 1.2, 1],
+                                    x: Math.sin(i) * 200,
+                                    y: Math.cos(i) * 100 
+                                }}
+                                transition={{ 
+                                    duration: 3 + i, 
+                                    repeat: Infinity,
+                                    delay: i * 0.5 
+                                }}
+                                className="absolute w-4 h-4 rounded-full bg-primary blur-sm"
+                                style={{
+                                    left: `${40 + (i * 10)}%`,
+                                    top: `${40 + (i * 5)}%`,
+                                }}
+                            />
+                        ))}
+
+                        {/* Connection Lines (Simulated) */}
+                        <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none">
+                            <motion.path 
+                                d="M 200 300 Q 400 100 600 300 T 1000 300"
+                                fill="none"
+                                stroke="url(#line-grad)"
+                                strokeWidth="2"
+                                initial={{ pathLength: 0 }}
+                                animate={{ pathLength: 1 }}
+                                transition={{ duration: 4, repeat: Infinity }}
+                            />
+                            <defs>
+                                <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="var(--primary)" />
+                                    <stop offset="100%" stopColor="#22d3ee" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+
+                        <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 p-8">
+                             <div className="text-center space-y-6">
+                                  <div className="relative">
+                                      <div className="w-32 h-32 rounded-full border-4 border-primary/20 mx-auto flex items-center justify-center animate-spin-slow">
+                                          <div className="w-4 h-4 rounded-full bg-primary shadow-[0_0_20px_rgba(99,102,241,0.8)]" />
+                                      </div>
+                                      <div className="absolute inset-0 w-32 h-32 rounded-full border-t-4 border-primary mx-auto animate-spin" />
+                                  </div>
+                                  <div className="space-y-2">
+                                    <p className="font-bold text-lg text-white">3D Data Map Engine</p>
+                                    <p className="text-xs text-primary animate-pulse">Analyzing 2,491 Industrial Assets in Real-Time</p>
+                                  </div>
+                             </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -144,15 +201,15 @@ export function Hero() {
                     initial={{ x: -50, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1 }}
-                    className="absolute top-12 left-12 glass-card p-6 rounded-2xl hidden md:block"
+                    className="absolute top-12 left-12 glass-card p-6 rounded-2xl hidden lg:block z-20"
                 >
                     <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-full bg-green-500/20 text-green-500">
+                        <div className="p-3 rounded-full bg-blue-500/20 text-blue-400">
                             <TrendingUp className="w-6 h-6" />
                         </div>
                         <div>
-                            <p className="text-sm text-muted-foreground">Absorción Neta</p>
-                            <p className="text-2xl font-bold">+12.5%</p>
+                            <p className="text-xs text-muted-foreground">Absorción Neta</p>
+                            <p className="text-xl font-bold">+12.5%</p>
                         </div>
                     </div>
                 </motion.div>
@@ -161,15 +218,15 @@ export function Hero() {
                     initial={{ x: 50, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1.2 }}
-                    className="absolute bottom-12 right-12 glass-card p-6 rounded-2xl hidden md:block"
+                    className="absolute bottom-12 right-12 glass-card p-6 rounded-2xl hidden lg:block z-20"
                 >
                     <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-full bg-blue-500/20 text-blue-500">
+                        <div className="p-3 rounded-full bg-cyan-500/20 text-cyan-400">
                             <Layers className="w-6 h-6" />
                         </div>
                         <div>
-                            <p className="text-sm text-muted-foreground">Nuevos Proyectos</p>
-                            <p className="text-2xl font-bold">24</p>
+                            <p className="text-xs text-muted-foreground">Nuevos Proyectos</p>
+                            <p className="text-xl font-bold">24</p>
                         </div>
                     </div>
                 </motion.div>

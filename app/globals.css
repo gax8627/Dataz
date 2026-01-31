@@ -7,8 +7,8 @@
     --background: 0 0% 100%;
     --foreground: 240 10% 4%;
 
-    /* Datoz Orange #FF6B35 -> HSL(16, 100%, 60%) */
-    --primary: 16 100% 60%;
+    /* Premium Indigo #6366f1 -> HSL(239, 84%, 67%) */
+    --primary: 239 84% 67%;
     --primary-foreground: 0 0% 98%;
 
     --card: 0 0% 100%;
@@ -46,7 +46,7 @@
     --popover: 240 10% 4%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 16 100% 60%;
+    --primary: 239 84% 67%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 240 4% 16%;
@@ -93,7 +93,7 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-400 to-amber-500 animate-gradient-x;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-500 to-cyan-400 animate-gradient-x;
   }
 
   .blob {

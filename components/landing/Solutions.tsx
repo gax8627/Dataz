@@ -18,7 +18,7 @@ export function Solutions() {
       description: "Cierra tratos más rápido armando pitches con datos irrefutables de mercado en tiempo real.",
       features: ["Disponibilidad en tiempo real", "Fichas técnicas de marca blanca", "Historial de transacciones"],
       cta: "Empoderar Equipo",
-      gradient: "from-primary/20 to-orange-500/20"
+      gradient: "from-primary/20 to-indigo-500/20"
     },
     {
       title: "Para Inversionistas",

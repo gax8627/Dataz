@@ -41,10 +41,10 @@ export function Navbar() {
         <div className="container px-6 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 relative group">
-            <span className="font-bold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-500 pb-1">
+            <span className="font-bold text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-500 pb-1">
               Dataz<span className="text-foreground">.</span>
             </span>
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-orange-500 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-cyan-500 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
           </Link>
 
           {/* Desktop Nav */}
@@ -76,7 +76,7 @@ export function Navbar() {
                     <Button variant="ghost" className="hover:bg-primary/10 hover:text-primary rounded-full px-6">Iniciar Sesión</Button>
                 </Link>
                 <Link href="#pricing">
-                    <Button className="rounded-full shadow-[0_0_20px_-5px_rgba(255,107,53,0.4)] hover:shadow-[0_0_25px_-5px_rgba(255,107,53,0.6)] transition-all duration-300">Prueba Gratis</Button>
+                    <Button className="rounded-full shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_-5px_rgba(99,102,241,0.6)] transition-all duration-300">Prueba Gratis</Button>
                 </Link>
             </div>
           </div>
