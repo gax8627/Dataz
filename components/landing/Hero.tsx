@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, useMotionValue, useSpring } from "fram
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, Database, TrendingUp, Layers } from "lucide-react"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 export function Hero() {
   const ref = useRef(null)
@@ -33,6 +33,24 @@ export function Hero() {
   const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
+  // Market Simulator State
+  const [hoveredAsset, setHoveredAsset] = useState<any>(null)
+
+  const markets = {
+    industrial: [
+      { name: "Monterrey", price: "$6.45", vacancy: "2.1%", available: "450k m²", x: 40, y: 30 },
+      { name: "Tijuana", price: "$7.20", vacancy: "1.5%", available: "120k m²", x: 20, y: 20 },
+      { name: "Ciudad Juárez", price: "$6.10", vacancy: "3.4%", available: "850k m²", x: 30, y: 15 },
+      { name: "Bajío", price: "$5.80", vacancy: "4.2%", available: "1.2M m²", x: 45, y: 45 },
+      { name: "CDMX", price: "$7.80", vacancy: "2.8%", available: "320k m²", x: 50, y: 60 },
+    ],
+    oficinas: [
+      { name: "Reforma", price: "$28.50", vacancy: "18.5%", available: "95k m²", x: 52, y: 62 },
+      { name: "Santa Fe", price: "$22.00", vacancy: "22.2%", available: "150k m²", x: 48, y: 58 },
+      { name: "Polanco", price: "$32.00", vacancy: "12.1%", available: "42k m²", x: 50, y: 55 },
+    ]
+  }
 
   return (
     <section 
@@ -136,40 +154,75 @@ export function Hero() {
                         {/* Simulated Grid Map */}
                         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]" />
                         
-                        {/* Floating Data Nodes */}
-                        {[...Array(6)].map((_, i) => (
+                        {/* Interactive Market Selector Overlay */}
+                        <div className="absolute top-4 left-4 z-30 flex gap-2">
+                            <div className="glass-card px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase border-primary/20 text-primary flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                                LIVE: INDUSTRIAL - MÉXICO
+                            </div>
+                        </div>
+
+                        {/* Floating Data Nodes (Interactive) */}
+                        {markets.industrial.map((asset, i) => (
                             <motion.div
                                 key={i}
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ 
-                                    opacity: [0.3, 0.6, 0.3], 
-                                    scale: [1, 1.2, 1],
-                                    x: Math.sin(i) * 200,
-                                    y: Math.cos(i) * 100 
+                                    opacity: [0.6, 1, 0.6], 
+                                    scale: hoveredAsset?.name === asset.name ? 1.5 : [1, 1.2, 1],
                                 }}
                                 transition={{ 
                                     duration: 3 + i, 
                                     repeat: Infinity,
-                                    delay: i * 0.5 
+                                    delay: i * 0.2 
                                 }}
-                                className="absolute w-4 h-4 rounded-full bg-primary blur-sm"
+                                onMouseEnter={() => setHoveredAsset(asset)}
+                                onMouseLeave={() => setHoveredAsset(null)}
+                                className="absolute w-6 h-6 rounded-full bg-primary/40 flex items-center justify-center cursor-crosshair z-20 group"
                                 style={{
-                                    left: `${40 + (i * 10)}%`,
-                                    top: `${40 + (i * 5)}%`,
+                                    left: `${asset.x}%`,
+                                    top: `${asset.y}%`,
                                 }}
-                            />
+                            >
+                                <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_rgba(99,102,241,1)]" />
+                                
+                                {/* Market Tooltip */}
+                                {hoveredAsset?.name === asset.name && (
+                                    <motion.div 
+                                        initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        className="absolute bottom-full mb-4 glass-card p-4 rounded-xl min-w-[180px] text-left z-50 pointer-events-none"
+                                    >
+                                        <p className="text-xs font-bold text-primary mb-1 uppercase tracking-tighter">{asset.name}</p>
+                                        <div className="space-y-1">
+                                            <div className="flex justify-between items-center text-[10px]">
+                                                <span className="text-muted-foreground">Asking Rent:</span>
+                                                <span className="font-mono text-white">{asset.price} USD</span>
+                                            </div>
+                                            <div className="flex justify-between items-center text-[10px]">
+                                                <span className="text-muted-foreground">Disponibilidad:</span>
+                                                <span className="font-mono text-white">{asset.available}</span>
+                                            </div>
+                                            <div className="flex justify-between items-center text-[10px]">
+                                                <span className="text-muted-foreground">Vacancia:</span>
+                                                <span className="font-mono text-cyan-400">{asset.vacancy}</span>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </motion.div>
                         ))}
 
-                        {/* Connection Lines (Simulated) */}
-                        <svg className="absolute inset-0 w-full h-full opacity-20 pointer-events-none">
+                        {/* Connection Lines (Simulated - Linking hotspots) */}
+                        <svg className="absolute inset-0 w-full h-full opacity-10 pointer-events-none">
                             <motion.path 
-                                d="M 200 300 Q 400 100 600 300 T 1000 300"
+                                d="M 400 300 Q 500 200 450 450 T 300 150"
                                 fill="none"
                                 stroke="url(#line-grad)"
-                                strokeWidth="2"
+                                strokeWidth="1"
                                 initial={{ pathLength: 0 }}
                                 animate={{ pathLength: 1 }}
-                                transition={{ duration: 4, repeat: Infinity }}
+                                transition={{ duration: 6, repeat: Infinity }}
                             />
                             <defs>
                                 <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -179,7 +232,7 @@ export function Hero() {
                             </defs>
                         </svg>
 
-                        <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 p-8">
+                        <div className="absolute inset-0 flex items-center justify-center text-primary font-mono text-sm tracking-widest uppercase bg-black/20 backdrop-blur-sm rounded-xl border border-white/5 p-8 pointer-events-none">
                              <div className="text-center space-y-6">
                                   <div className="relative">
                                       <div className="w-32 h-32 rounded-full border-4 border-primary/20 mx-auto flex items-center justify-center animate-spin-slow">
@@ -188,8 +241,8 @@ export function Hero() {
                                       <div className="absolute inset-0 w-32 h-32 rounded-full border-t-4 border-primary mx-auto animate-spin" />
                                   </div>
                                   <div className="space-y-2">
-                                    <p className="font-bold text-lg text-white">3D Data Map Engine</p>
-                                    <p className="text-xs text-primary animate-pulse">Analyzing 2,491 Industrial Assets in Real-Time</p>
+                                    <p className="font-bold text-lg text-white">Market Intelligence Engine</p>
+                                    <p className="text-[10px] text-primary animate-pulse">Syncing with 3.2M m² of Industrial Inventory</p>
                                   </div>
                              </div>
                         </div>
@@ -201,16 +254,22 @@ export function Hero() {
                     initial={{ x: -50, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1 }}
-                    className="absolute top-12 left-12 glass-card p-6 rounded-2xl hidden lg:block z-20"
+                    className="absolute top-12 right-12 glass-card p-6 rounded-2xl hidden lg:block z-20 min-w-[200px]"
                 >
-                    <div className="flex items-center gap-4">
-                        <div className="p-3 rounded-full bg-blue-500/20 text-blue-400">
-                            <TrendingUp className="w-6 h-6" />
+                    <div className="flex items-center gap-4 mb-4">
+                        <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
+                            <TrendingUp className="w-5 h-5" />
                         </div>
-                        <div>
-                            <p className="text-xs text-muted-foreground">Absorción Neta</p>
-                            <p className="text-xl font-bold">+12.5%</p>
-                        </div>
+                        <p className="text-xs font-bold uppercase tracking-widest">Market Stats</p>
+                    </div>
+                    <div className="space-y-3">
+                         <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                             <motion.div initial={{ width: 0 }} animate={{ width: "70%" }} transition={{ duration: 2, delay: 1.5 }} className="h-full bg-primary" />
+                         </div>
+                         <div className="flex justify-between items-end">
+                              <p className="text-[10px] text-muted-foreground">Absorción Promedio</p>
+                              <p className="text-sm font-bold">+12.5%</p>
+                         </div>
                     </div>
                 </motion.div>
 
@@ -218,7 +277,7 @@ export function Hero() {
                     initial={{ x: 50, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ delay: 1.2 }}
-                    className="absolute bottom-12 right-12 glass-card p-6 rounded-2xl hidden lg:block z-20"
+                    className="absolute bottom-12 left-12 glass-card p-6 rounded-2xl hidden lg:block z-20"
                 >
                     <div className="flex items-center gap-4">
                         <div className="p-3 rounded-full bg-cyan-500/20 text-cyan-400">
