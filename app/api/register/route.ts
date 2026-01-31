@@ -3,7 +3,8 @@ import { prisma } from "@/lib/prisma"
 import { z } from "zod"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+export const dynamic = "force-dynamic"
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
 
 const registerSchema = z.object({
   name: z.string().min(2, "El nombre es requerido"),
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
     })
 
     // Send Welcome Email
-    if (process.env.RESEND_API_KEY) {
+    if (resend) {
         try {
             await resend.emails.send({
                 from: "onboarding@resend.dev", // Using default for dev, change to verified domain later
