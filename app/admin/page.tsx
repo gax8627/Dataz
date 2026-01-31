@@ -74,8 +74,8 @@ export default async function AdminDashboard() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
+                    {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {users.map((user: any) => (
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         <TableRow key={user.id}>
                             <TableCell>{user.name}</TableCell>
                             <TableCell>{user.email}</TableCell>
