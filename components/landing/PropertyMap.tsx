@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Tabs, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsTrigger, TabsList } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Info } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
@@ -76,13 +76,13 @@ export function PropertyMap() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <Tabs defaultValue="all" className="w-full" onValueChange={setMarket}>
-                        <div className="flex flex-col gap-2">
-                            <TabsTrigger value="all" className="justify-start px-4">All Markets</TabsTrigger>
-                            <TabsTrigger value="Mexico City" className="justify-start px-4">Mexico City</TabsTrigger>
-                            <TabsTrigger value="Monterrey" className="justify-start px-4">Monterrey</TabsTrigger>
-                            <TabsTrigger value="Tijuana" className="justify-start px-4">Tijuana</TabsTrigger>
-                            <TabsTrigger value="Queretaro" className="justify-start px-4">Queretaro</TabsTrigger>
-                        </div>
+                        <TabsList className="flex flex-col h-auto bg-transparent p-0 gap-2">
+                            <TabsTrigger value="all" className="justify-start px-4 w-full">All Markets</TabsTrigger>
+                            <TabsTrigger value="Mexico City" className="justify-start px-4 w-full">Mexico City</TabsTrigger>
+                            <TabsTrigger value="Monterrey" className="justify-start px-4 w-full">Monterrey</TabsTrigger>
+                            <TabsTrigger value="Tijuana" className="justify-start px-4 w-full">Tijuana</TabsTrigger>
+                            <TabsTrigger value="Queretaro" className="justify-start px-4 w-full">Queretaro</TabsTrigger>
+                        </TabsList>
                     </Tabs>
                 </CardContent>
             </Card>
