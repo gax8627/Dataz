@@ -1,30 +1,43 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import { Check, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
+import { useLanguage } from "@/lib/i18n/LanguageContext"
 
 export function Solutions() {
+  const { t } = useLanguage()
+
   const solutions = [
     {
-      title: "Para Desarrolladores",
-      description: "Identifica la demanda insatisfecha y optimiza tu pipeline de construcción con datos precisos de absorción.",
-      features: ["Análisis de absorción neta", "Precios de renta por submercado", "Tracking de construcción"],
-      cta: "Planificar Desarrollo",
+      title: t("solutions.developer.title"),
+      description: t("solutions.developer.description"),
+      features: [
+        t("solutions.developer.features.0"),
+        t("solutions.developer.features.1"),
+        t("solutions.developer.features.2")
+      ],
+      cta: t("solutions.developer.cta"),
       gradient: "from-blue-500/20 to-cyan-500/20"
     },
     {
-      title: "Para Brokers",
-      description: "Cierra tratos más rápido armando pitches con datos irrefutables de mercado en tiempo real.",
-      features: ["Disponibilidad en tiempo real", "Fichas técnicas de marca blanca", "Historial de transacciones"],
-      cta: "Empoderar Equipo",
+      title: t("solutions.broker.title"),
+      description: t("solutions.broker.description"),
+      features: [
+        t("solutions.broker.features.0"),
+        t("solutions.broker.features.1"),
+        t("solutions.broker.features.2")
+      ],
+      cta: t("solutions.broker.cta"),
       gradient: "from-primary/20 to-indigo-500/20"
     },
     {
-      title: "Para Inversionistas",
-      description: "Maximiza el retorno y minimiza el riesgo validando tus tesis de inversión con inteligencia predictiva.",
-      features: ["Cap rates de mercado", "Tendencias de vacancia", "Benchmarking de activos"],
-      cta: "Ver Oportunidades",
+      title: t("solutions.investor.title"),
+      description: t("solutions.investor.description"),
+      features: [
+        t("solutions.investor.features.0"),
+        t("solutions.investor.features.1"),
+        t("solutions.investor.features.2")
+      ],
+      cta: t("solutions.investor.cta"),
       gradient: "from-green-500/20 to-emerald-500/20"
     }
   ]
@@ -41,9 +54,9 @@ export function Solutions() {
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
         >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">Soluciones a la medida de tu <span className="text-gradient">Rol</span></h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl mb-4">{t("solutions.title")}<span className="text-gradient">{t("solutions.role")}</span></h2>
             <p className="max-w-[900px] text-muted-foreground sm:text-xl/relaxed mx-auto">
-            Diseñado específicamente para los jugadores clave del sector inmobiliario comercial.
+            {t("solutions.description")}
             </p>
         </motion.div>
       </div>

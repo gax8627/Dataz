@@ -1,11 +1,12 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
+import Link from "next/link"
 // import { redirect } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { Download, Users, FileText, CheckCircle } from "lucide-react"
+import { Download, Users, FileText, CheckCircle, MapPin } from "lucide-react"
 
 export default async function AdminDashboard() {
   const session = await getServerSession(authOptions)
@@ -34,6 +35,12 @@ export default async function AdminDashboard() {
                 <Download className="mr-2 h-4 w-4" />
                 Exportar CSV
             </Button>
+            <Link href="/admin/properties">
+                <Button>
+                    <MapPin className="mr-2 h-4 w-4" />
+                    Gestionar Mapas
+                </Button>
+            </Link>
         </div>
       </div>
 

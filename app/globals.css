@@ -1,5 +1,28 @@
 @tailwind base;
 @tailwind components;
+@layer components {
+  /* Leaflet Customizations */
+  .leaflet-container {
+    font-family: var(--font-inter), sans-serif;
+  }
+
+  .custom-marker-icon {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .property-popup .leaflet-popup-content-wrapper {
+    @apply bg-background/80 backdrop-blur-md border border-border/50 rounded-xl shadow-2xl;
+  }
+
+  .property-popup .leaflet-popup-content {
+    @apply m-0 p-0;
+  }
+
+  .property-popup .leaflet-popup-tip {
+    @apply bg-background/80 backdrop-blur-md;
+  }
+}
 @tailwind utilities;
 
 @layer base {

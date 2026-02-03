@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, Database, TrendingUp, Layers } from "lucide-react"
 import { useRef, useState } from "react"
+import { useLanguage } from "@/lib/i18n/LanguageContext"
 
 interface Asset {
   name: string
@@ -16,6 +17,7 @@ interface Asset {
 }
 
 export function Hero() {
+  const { t } = useLanguage()
   const ref = useRef(null)
   
   // Mouse Parallax
@@ -94,7 +96,7 @@ export function Hero() {
            className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium border border-primary/20 bg-primary/5 text-primary mb-8 backdrop-blur-md shadow-[0_0_20px_-5px_rgba(99,102,241,0.3)]"
         >
           <Database className="mr-2 h-4 w-4" />
-          La plataforma #1 en México
+          {t("hero.badge")}
         </motion.div>
 
         {/* Main Title with 3D feel */}
@@ -109,10 +111,10 @@ export function Hero() {
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9]"
           >
             <span className="block bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/40 drop-shadow-sm">
-              Inteligencia
+              {t("hero.titleLine1")}
             </span>
             <span className="block text-gradient pb-2 drop-shadow-lg">
-              Inmobiliaria
+              {t("hero.titleLine2")}
             </span>
           </motion.h1>
 
@@ -122,7 +124,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Datos precisos, análisis predictivos y visualización 3D para dominar el mercado de activos <span className="text-foreground font-semibold">industriales, oficinas y retail</span>.
+            {t("hero.description")}
           </motion.p>
         </motion.div>
 
@@ -135,13 +137,13 @@ export function Hero() {
         >
           <Link href="#demo">
             <Button size="lg" className="group w-full sm:w-auto h-16 px-10 text-lg rounded-full shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] hover:shadow-[0_0_60px_-10px_rgba(99,102,241,0.7)] transition-all duration-300 bg-gradient-to-r from-primary to-blue-600 border-0">
-              Solicitar Demo
+              {t("hero.demoBtn")}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
           <Link href="#features">
             <Button variant="outline" size="lg" className="w-full sm:w-auto h-16 px-10 text-lg rounded-full backdrop-blur-md border-white/10 bg-white/5 hover:bg-white/10 hover:border-primary/50 transition-all duration-300">
-              Explorar Mapa 3D
+              {t("hero.mapBtn")}
             </Button>
           </Link>
         </motion.div>
@@ -167,7 +169,7 @@ export function Hero() {
                         <div className="absolute top-4 left-4 z-30 flex gap-2">
                             <div className="glass-card px-4 py-2 rounded-full text-[10px] font-bold tracking-widest uppercase border-primary/20 text-primary flex items-center gap-2 bg-white/60 dark:bg-black/60">
                                 <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                                LIVE: INDUSTRIAL - MÉXICO
+                                {t("hero.liveStatus")}
                             </div>
                         </div>
 
@@ -202,18 +204,18 @@ export function Hero() {
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         className="absolute bottom-full mb-4 glass-card p-4 rounded-xl min-w-[180px] text-left z-50 pointer-events-none bg-background/95 border-primary/20"
                                     >
-                                        <p className="text-xs font-bold text-primary mb-1 uppercase tracking-tighter">{asset.name}</p>
+                                        <p className="text-xs font-bold text-primary mb-1 uppercase tracking-tighter">{t(asset.name.toLowerCase()) !== asset.name.toLowerCase() ? t(asset.name.toLowerCase()) : asset.name}</p>
                                         <div className="space-y-1">
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground font-medium">Asking Rent:</span>
+                                                <span className="text-muted-foreground font-medium">{t("hero.askingRent")}:</span>
                                                 <span className="font-mono text-foreground">{asset.price} USD</span>
                                             </div>
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground font-medium">Disponibilidad:</span>
+                                                <span className="text-muted-foreground font-medium">{t("hero.availability")}:</span>
                                                 <span className="font-mono text-foreground">{asset.available}</span>
                                             </div>
                                             <div className="flex justify-between items-center text-[10px]">
-                                                <span className="text-muted-foreground font-medium">Vacancia:</span>
+                                                <span className="text-muted-foreground font-medium">{t("hero.vacancy")}:</span>
                                                 <span className="font-mono text-primary">{asset.vacancy}</span>
                                             </div>
                                         </div>
@@ -254,8 +256,8 @@ export function Hero() {
                                       </div>
                                   </div>
                                   <div className="space-y-1">
-                                    <p className="font-bold text-lg text-foreground tracking-tight normal-case">Mercado en Tiempo Real</p>
-                                    <p className="text-[10px] text-primary/80 font-semibold">ACTIVO: 2,491 activos monitoreados</p>
+                                    <p className="font-bold text-lg text-foreground tracking-tight normal-case">{t("hero.realTimeMarket")}</p>
+                                    <p className="text-[10px] text-primary/80 font-semibold">{t("hero.activeAssets", { count: 2491 })}</p>
                                   </div>
                              </div>
                         </div>
@@ -273,14 +275,14 @@ export function Hero() {
                         <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
                             <TrendingUp className="w-5 h-5" />
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-widest">Market Stats</p>
+                        <p className="text-xs font-bold uppercase tracking-widest">{t("hero.marketStats")}</p>
                     </div>
                     <div className="space-y-3">
                          <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
                              <motion.div initial={{ width: 0 }} animate={{ width: "70%" }} transition={{ duration: 2, delay: 1.5 }} className="h-full bg-primary" />
                          </div>
                          <div className="flex justify-between items-end">
-                              <p className="text-[10px] text-muted-foreground">Absorción Promedio</p>
+                              <p className="text-[10px] text-muted-foreground">{t("hero.avgAbsorption")}</p>
                               <p className="text-sm font-bold">+12.5%</p>
                          </div>
                     </div>
@@ -297,7 +299,7 @@ export function Hero() {
                             <Layers className="w-6 h-6" />
                         </div>
                         <div>
-                            <p className="text-xs text-muted-foreground">Nuevos Proyectos</p>
+                            <p className="text-xs text-muted-foreground">{t("hero.newProjects")}</p>
                             <p className="text-xl font-bold">24</p>
                         </div>
                     </div>

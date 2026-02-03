@@ -13,13 +13,15 @@ import { useDropzone } from "react-dropzone"
 import { toast } from "sonner"
 import { Cloud, FileText, Loader2, X } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useLanguage } from "@/lib/i18n/LanguageContext"
 
 const submissionSchema = z.object({
-  summary: z.string().min(50, "El resumen debe tener al menos 50 caracteres"),
-  pdfUrl: z.string().url("Debes subir el archivo PDF"),
+  summary: z.string().min(50, "Description must be at least 50 characters"),
+  pdfUrl: z.string().url("Please upload the property inventory file"),
 })
 
 export default function SubmissionPage() {
+  const { t } = useLanguage()
   const [isLoading, setIsLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const router = useRouter()
@@ -32,13 +34,12 @@ export default function SubmissionPage() {
     const selected = acceptedFiles[0]
     if (selected) {
         if (selected.size > 10 * 1024 * 1024) {
-            toast.error("El archivo excede 10MB")
+            toast.error("File exceeds 10MB")
             return
         }
         setFile(selected)
-        // Mock upload url for now - In production, upload to Cloudinary here
-        form.setValue("pdfUrl", "https://res.cloudinary.com/demo/image/upload/sample.pdf")
-        toast.success("Archivo cargado correctamente (Simulado)")
+        form.setValue("pdfUrl", "https://res.cloudinary.com/demo/image/upload/inventory.pdf")
+        toast.success("File uploaded successfully (Mock)")
     }
   }, [form])
 
@@ -56,12 +57,12 @@ export default function SubmissionPage() {
             body: JSON.stringify(values),
         })
 
-        if (!response.ok) throw new Error("Error al guardar")
+        if (!response.ok) throw new Error("Save failed")
         
-        toast.success("Entrega enviada correctamente")
+        toast.success("Inventory submitted correctly")
         router.push("/dashboard")
     } catch {
-        toast.error("Error al enviar entrega")
+        toast.error("Error submitting inventory")
     } finally {
         setIsLoading(false)
     }
@@ -70,15 +71,15 @@ export default function SubmissionPage() {
   return (
     <div className="max-w-3xl mx-auto py-8">
         <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Tu Entrega</h2>
-            <p className="text-muted-foreground">Sube tu análisis de mercado para participar.</p>
+            <h2 className="text-3xl font-bold tracking-tight">{t("dashboard.submission.title")}</h2>
+            <p className="text-muted-foreground">{t("dashboard.submission.desc")}</p>
         </div>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <Card>
                 <CardHeader>
-                    <CardTitle>Documento de Análisis</CardTitle>
-                    <CardDescription>Sube tu reporte en formato PDF (Max 10MB).</CardDescription>
+                    <CardTitle>Inventory Document</CardTitle>
+                    <CardDescription>Upload your inventory in PDF or CSV format (Max 10MB).</CardDescription>
                 </CardHeader>
                 <CardContent>
                     {!file ? (
@@ -89,10 +90,10 @@ export default function SubmissionPage() {
                             <input {...getInputProps()} />
                             <Cloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                             <p className="text-sm font-medium">
-                                Arrastra tu PDF aquí o haz click para seleccionar
+                                Drag your file here or click to select
                             </p>
                             <p className="text-xs text-muted-foreground mt-2">
-                                Solo archivos .pdf
+                                Accepts PDF or CSV
                             </p>
                         </div>
                     ) : (
@@ -122,23 +123,23 @@ export default function SubmissionPage() {
 
             <Card>
                 <CardHeader>
-                    <CardTitle>Resumen Ejecutivo</CardTitle>
-                    <CardDescription>Describe brevemente tu metodología y principales hallazgos (Markdown soportado).</CardDescription>
+                    <CardTitle>Notes & Methodology</CardTitle>
+                    <CardDescription>Include any specific details about the data source or building specs.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Textarea 
                         {...form.register("summary")} 
                         className="min-h-[200px] font-mono" 
-                        placeholder="# Metodología..." 
+                        placeholder="# Specifications..." 
                     />
                     {form.formState.errors.summary && <p className="text-xs text-destructive mt-2">{form.formState.errors.summary.message}</p>}
                 </CardContent>
             </Card>
 
             <div className="flex justify-end gap-4">
-                <Button variant="outline" type="button" onClick={() => router.back()}>Cancelar</Button>
+                <Button variant="outline" type="button" onClick={() => router.back()}>Cancel</Button>
                 <Button type="submit" disabled={isLoading || !file}>
-                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Enviando...</> : "Confirmar Entrega"}
+                    {isLoading ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...</> : "Confirm Submission"}
                 </Button>
             </div>
         </form>

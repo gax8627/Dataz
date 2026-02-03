@@ -91,3 +91,17 @@ model Score {
   presentation Int
   comments     String?
 }
+
+model Property {
+  id            String   @id @default(cuid())
+  source        String   // e.g., "Prologis", "Vesta"
+  externalId    String?  // ID from the source system
+  latitude      Float
+  longitude     Float
+  totalArea     Float
+  availableArea Float
+  address       String?
+  market        String   // e.g., "Mexico City", "Monterrey"
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}

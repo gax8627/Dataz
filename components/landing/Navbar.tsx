@@ -6,9 +6,11 @@ import { useTheme } from "next-themes"
 import { Menu, Moon, Sun, X, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+import { useLanguage } from "@/lib/i18n/LanguageContext"
 
 export function Navbar() {
   const { theme, setTheme } = useTheme()
+  const { language, setLanguage, t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
   
@@ -21,9 +23,9 @@ export function Navbar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   
   const navLinks = [
-    { href: "#features", label: "Características" },
-    { href: "#solutions", label: "Soluciones" },
-    { href: "#pricing", label: "Precios" },
+    { href: "#features", label: t("navbar.features") },
+    { href: "#solutions", label: t("navbar.solutions") },
+    { href: "#pricing", label: t("navbar.pricing") },
   ]
 
   return (
@@ -61,6 +63,16 @@ export function Navbar() {
             ))}
             
             <div className="flex items-center gap-3 pl-4 border-l border-border/50">
+                {/* Language Switcher */}
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    className="rounded-full hover:bg-primary/10 hover:text-primary transition-colors font-bold text-xs w-10 h-10"
+                    onClick={() => setLanguage(language === "en" ? "es" : "en")}
+                >
+                    {language.toUpperCase()}
+                </Button>
+
                 <Button
                     variant="ghost"
                     size="icon"
@@ -73,16 +85,24 @@ export function Navbar() {
                 </Button>
                 
                 <Link href="/api/auth/signin">
-                    <Button variant="ghost" className="hover:bg-primary/10 hover:text-primary rounded-full px-6">Iniciar Sesión</Button>
+                    <Button variant="ghost" className="hover:bg-primary/10 hover:text-primary rounded-full px-6">{t("navbar.login")}</Button>
                 </Link>
                 <Link href="#pricing">
-                    <Button className="rounded-full shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_-5px_rgba(99,102,241,0.6)] transition-all duration-300">Prueba Gratis</Button>
+                    <Button className="rounded-full shadow-[0_0_20px_-5px_rgba(99,102,241,0.4)] hover:shadow-[0_0_25px_-5px_rgba(99,102,241,0.6)] transition-all duration-300">{t("navbar.freeTrial")}</Button>
                 </Link>
             </div>
           </div>
 
           {/* Mobile Toggle */}
           <div className="flex md:hidden items-center gap-2">
+            <Button
+                variant="ghost"
+                size="sm"
+                className="rounded-full font-bold text-xs"
+                onClick={() => setLanguage(language === "en" ? "es" : "en")}
+            >
+                {language.toUpperCase()}
+            </Button>
             <Button
                 variant="ghost"
                 size="icon"
@@ -120,10 +140,10 @@ export function Navbar() {
               ))}
               <div className="flex flex-col gap-3 mt-4 pt-4 border-t border-border/50">
                   <Link href="/api/auth/signin" onClick={() => setIsMenuOpen(false)}>
-                      <Button variant="outline" className="w-full rounded-xl h-12">Iniciar Sesión</Button>
+                      <Button variant="outline" className="w-full rounded-xl h-12">{t("navbar.login")}</Button>
                   </Link>
                   <Link href="#pricing" onClick={() => setIsMenuOpen(false)}>
-                      <Button className="w-full rounded-xl h-12 shadow-lg shadow-primary/20">Comenzar Prueba Gratis</Button>
+                      <Button className="w-full rounded-xl h-12 shadow-lg shadow-primary/20">{t("navbar.startFreeTrial")}</Button>
                   </Link>
               </div>
           </motion.div>

@@ -1,0 +1,186 @@
+{
+  "navbar": {
+    "features": "Features",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "login": "Login",
+    "freeTrial": "Free Trial",
+    "startFreeTrial": "Start Free Trial"
+  },
+  "hero": {
+    "badge": "The #1 platform in Mexico",
+    "titleLine1": "Real Estate",
+    "titleLine2": "Intelligence",
+    "description": "Precise data, predictive analysis and 3D visualization to dominate the market for industrial, office and retail assets.",
+    "demoBtn": "Request Demo",
+    "mapBtn": "Explore 3D Map",
+    "liveStatus": "LIVE: INDUSTRIAL - MEXICO",
+    "realTimeMarket": "Real-Time Market",
+    "activeAssets": "ACTIVE: {{count}} monitored assets",
+    "marketStats": "Market Stats",
+    "avgAbsorption": "Average Absorption",
+    "newProjects": "New Projects",
+    "askingRent": "Asking Rent",
+    "availability": "Availability",
+    "vacancy": "Vacancy"
+  },
+  "features": {
+    "badge": "Power Your Analysis",
+    "titlePrefix": "Everything you need to ",
+    "titleHighlight": "close deals",
+    "description": "Our technology streamlines your research and marketing process with tools designed for experts.",
+    "marketExplorer": {
+      "title": "Market Explorer",
+      "description": "Visualize industrial, office, and retail inventory in over 25 cities."
+    },
+    "advancedAnalytics": {
+      "title": "Advanced Analytics",
+      "description": "Interactive dashboards with absorption rates and pricing."
+    },
+    "automatedReports": {
+      "title": "Automated Reports",
+      "description": "Generate Real Estate Market Analysis (REMA) and tech sheets in PDF with one click."
+    },
+    "contactDirectory": {
+      "title": "Contact Directory",
+      "description": "Database of top owners and brokers."
+    },
+    "developmentPipeline": {
+      "title": "Development Pipeline",
+      "description": "Monitor projects under construction and delivery times."
+    },
+    "marketTrends": {
+      "title": "Market Trends",
+      "description": "Predictive indicators and demand analysis."
+    },
+    "apiIntegration": {
+      "title": "API Integration",
+      "description": "Connect Dataz with your CRM or ERP."
+    }
+  },
+  "solutions": {
+    "title": "Solutions tailored to your ",
+    "role": "Role",
+    "description": "Specifically designed for the key players in the commercial real estate sector.",
+    "developer": {
+      "title": "For Developers",
+      "description": "Identify unmet demand and optimize your construction pipeline with precise absorption data.",
+      "features": ["Net absorption analysis", "Rent prices by submarket", "Construction tracking"],
+      "cta": "Plan Development"
+    },
+    "broker": {
+      "title": "For Brokers",
+      "description": "Close deals faster by building pitches with irrefutable real-time market data.",
+      "features": ["Real-time availability", "White-label data sheets", "Transaction history"],
+      "cta": "Empower Team"
+    },
+    "investor": {
+      "title": "For Investors",
+      "description": "Maximize return and minimize risk by validating your investment theses with predictive intelligence.",
+      "features": ["Market cap rates", "Vacancy trends", "Asset benchmarking"],
+      "cta": "View Opportunities"
+    }
+  },
+  "pricing": {
+    "title": "Plans designed for growth",
+    "description": "Choose the plan that best fits your information needs.",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "savePercent": "-20%",
+    "perMonth": "/mo",
+    "starter": {
+      "title": "Starter",
+      "description": "For independent consultants",
+      "features": [
+        "Access to 1 Market",
+        "Basic search",
+        "5 PDF Reports / mo"
+      ],
+      "cta": "Start for Free"
+    },
+    "professional": {
+      "title": "Professional",
+      "description": "For commercial teams",
+      "popular": "POPULAR",
+      "features": [
+        "National Access (All markets)",
+        "Advanced filters and Analytics",
+        "Unlimited reports",
+        "Excel export"
+      ],
+      "cta": "14-Day Trial"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "For large corporates",
+      "custom": "Custom",
+      "features": [
+        "Multi-user and access control",
+        "API integration",
+        "24/7 dedicated support",
+        "Custom data warehouse"
+      ],
+      "cta": "Contact Sales"
+    }
+  },
+  "footer": {
+    "tagline": "The leading real estate intelligence platform in Mexico. Connecting data, people, and decisions with cutting-edge technology.",
+    "product": "Product",
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "blog": "Blog",
+      "careers": "Careers",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "security": "Security"
+    },
+    "rights": "All rights reserved.",
+    "status": "System Operational"
+  },
+  "dashboard": {
+    "welcome": "Welcome, {{name}}",
+    "tagline": "Your real estate intelligence overview.",
+    "awareness": {
+      "title": "Market Awareness",
+      "status": "Active",
+      "desc": "Monitoring 25+ cities"
+    },
+    "submission": {
+      "title": "Inventory Submission",
+      "desc": "Submit your properties to be featured on our Market Explorer.",
+      "cta": "Submit New Data"
+    },
+    "sidebar": {
+      "portal": "Intelligence Portal",
+      "overview": "Market Overview",
+      "dataSubmit": "Data Submission",
+      "resources": "Resources",
+      "signOut": "Sign Out"
+    },
+    "charts": {
+      "absorption": "Market Absorption vs Vacancy",
+      "absDesc": "Consolidated data from the top 5 markets in Mexico.",
+      "absLabel": "Absorption (m²)"
+    }
+  },
+  "admin": {
+    "panel": "Admin Control Panel",
+    "manageMap": "Manage Maps",
+    "recentProperties": "Recent Properties",
+    "source": "Source",
+    "market": "Market",
+    "totalArea": "Total Area",
+    "available": "Available",
+    "updated": "Updated",
+    "importTitle": "Import Data",
+    "importDesc": "Upload CSV files with Prologis, Vesta and other availability."
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}

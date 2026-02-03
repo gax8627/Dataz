@@ -1,0 +1,186 @@
+{
+  "navbar": {
+    "features": "Características",
+    "solutions": "Soluciones",
+    "pricing": "Precios",
+    "login": "Iniciar Sesión",
+    "freeTrial": "Prueba Gratis",
+    "startFreeTrial": "Comenzar Prueba Gratis"
+  },
+  "hero": {
+    "badge": "La plataforma #1 en México",
+    "titleLine1": "Inteligencia",
+    "titleLine2": "Inmobiliaria",
+    "description": "Datos precisos, análisis predictivos y visualización 3D para dominar el mercado de activos industriales, oficinas y retail.",
+    "demoBtn": "Solicitar Demo",
+    "mapBtn": "Explorar Mapa 3D",
+    "liveStatus": "LIVE: INDUSTRIAL - MÉXICO",
+    "realTimeMarket": "Mercado en Tiempo Real",
+    "activeAssets": "ACTIVO: {{count}} activos monitoreados",
+    "marketStats": "Market Stats",
+    "avgAbsorption": "Absorción Promedio",
+    "newProjects": "Nuevos Proyectos",
+    "askingRent": "Asking Rent",
+    "availability": "Disponibilidad",
+    "vacancy": "Vacancia"
+  },
+  "features": {
+    "badge": "Potencia tu Análisis",
+    "titlePrefix": "Todo lo que necesitas para ",
+    "titleHighlight": "cerrar tratos",
+    "description": "Nuestra tecnología agiliza tu proceso de investigación y comercialización con herramientas diseñadas para expertos.",
+    "marketExplorer": {
+      "title": "Explorador de Mercado",
+      "description": "Visualiza inventario industrial, oficinas y retail en más de 25 ciudades."
+    },
+    "advancedAnalytics": {
+      "title": "Analytics Avanzados",
+      "description": "Dashboards interactivos con tasas de absorción y precios."
+    },
+    "automatedReports": {
+      "title": "Reportes Automatizados",
+      "description": "Genera comparables (CMAs) y fichas técnicas en PDF con un clic."
+    },
+    "contactDirectory": {
+      "title": "Directorio de Contactos",
+      "description": "Base de datos de top propietarios y brokers."
+    },
+    "developmentPipeline": {
+      "title": "Pipeline de Desarrollo",
+      "description": "Monitorea obras en construcción y tiempos de entrega."
+    },
+    "marketTrends": {
+      "title": "Tendencias de Mercado",
+      "description": "Indicadores predictivos y análisis de demanda."
+    },
+    "apiIntegration": {
+      "title": "API Integration",
+      "description": "Conecta Dataz con tu CRM o ERP."
+    }
+  },
+  "solutions": {
+    "title": "Soluciones a la medida de tu ",
+    "role": "Rol",
+    "description": "Diseñado específicamente para los jugadores clave del sector inmobiliario comercial.",
+    "developer": {
+      "title": "Para Desarrolladores",
+      "description": "Identifica la demanda insatisfecha y optimiza tu pipeline de construcción con datos precisos de absorción.",
+      "features": ["Análisis de absorción neta", "Precios de renta por submercado", "Tracking de construcción"],
+      "cta": "Planificar Desarrollo"
+    },
+    "broker": {
+      "title": "Para Brokers",
+      "description": "Cierra tratos más rápido armando pitches con datos irrefutables de mercado en tiempo real.",
+      "features": ["Disponibilidad en tiempo real", "Fichas técnicas de marca blanca", "Historial de transacciones"],
+      "cta": "Empoderar Equipo"
+    },
+    "investor": {
+      "title": "Para Inversionistas",
+      "description": "Maximiza el retorno y minimiza el riesgo validando tus tesis de inversión con inteligencia predictiva.",
+      "features": ["Cap rates de mercado", "Tendencias de vacancia", "Benchmarking de activos"],
+      "cta": "Ver Oportunidades"
+    }
+  },
+  "pricing": {
+    "title": "Planes diseñados para crecer",
+    "description": "Elige el plan que mejor se adapte a tus necesidades de información.",
+    "monthly": "Mensual",
+    "annual": "Anual",
+    "savePercent": "-20%",
+    "perMonth": "/mes",
+    "starter": {
+      "title": "Starter",
+      "description": "Para consultores independientes",
+      "features": [
+        "Acceso a 1 Mercado",
+        "Búsqueda básica",
+        "5 Reportes PDF / mes"
+      ],
+      "cta": "Comenzar Gratis"
+    },
+    "professional": {
+      "title": "Professional",
+      "description": "Para equipos comerciales",
+      "popular": "POPULAR",
+      "features": [
+        "Acceso Nacional (Todos los mercados)",
+        "Filtros avanzados y Analytics",
+        "Reportes ilimitados",
+        "Exportación a Excel"
+      ],
+      "cta": "Prueba de 14 Días"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "Para grandes corporativos",
+      "custom": "Custom",
+      "features": [
+        "Multi-usuario y control de accesos",
+        "API de integración",
+        "Soporte dedicado 24/7",
+        "Data warehouse personalizada"
+      ],
+      "cta": "Contactar Ventas"
+    }
+  },
+  "footer": {
+    "tagline": "La plataforma líder de inteligencia inmobiliaria en México. Conectando datos, personas y decisiones con tecnología de punta.",
+    "product": "Producto",
+    "company": {
+      "title": "Compañía",
+      "about": "Nosotros",
+      "blog": "Blog",
+      "careers": "Carreras",
+      "contact": "Contacto"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacidad",
+      "terms": "Términos",
+      "security": "Seguridad"
+    },
+    "rights": "Todos los derechos reservados.",
+    "status": "Sistema Operativo"
+  },
+  "dashboard": {
+    "welcome": "Bienvenido, {{name}}",
+    "tagline": "Tu resumen de inteligencia inmobiliaria.",
+    "awareness": {
+      "title": "Conciencia de Mercado",
+      "status": "Activo",
+      "desc": "Monitoreando 25+ ciudades"
+    },
+    "submission": {
+      "title": "Entrega de Inventario",
+      "desc": "Sube tus propiedades para que aparezcan en nuestro Market Explorer.",
+      "cta": "Enviar Nuevos Datos"
+    },
+    "sidebar": {
+      "portal": "Portal de Inteligencia",
+      "overview": "Resumen de Mercado",
+      "dataSubmit": "Entrega de Datos",
+      "resources": "Recursos",
+      "signOut": "Cerrar Sesión"
+    },
+    "charts": {
+      "absorption": "Absorción de Mercado vs Vacancia",
+      "absDesc": "Datos consolidados de los 5 mercados principales de México.",
+      "absLabel": "Absorción (m²)"
+    }
+  },
+  "admin": {
+    "panel": "Panel de Control de Administración",
+    "manageMap": "Gestionar Mapas",
+    "recentProperties": "Propiedades Recientes",
+    "source": "Fuente",
+    "market": "Mercado",
+    "totalArea": "Área Total",
+    "available": "Disponible",
+    "updated": "Actualizado",
+    "importTitle": "Importar Datos",
+    "importDesc": "Carga archivos CSV con disponibilidad de Prologis, Vesta y otros."
+  },
+  "common": {
+    "loading": "Cargando..."
+  }
+}

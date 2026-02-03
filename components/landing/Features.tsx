@@ -1,55 +1,56 @@
-"use client"
-
 import { motion } from "framer-motion"
 import { BarChart3, Building2, Map, Search, FileText, ArrowUpRight, Database } from "lucide-react"
+import { useLanguage } from "@/lib/i18n/LanguageContext"
 
 export function Features() {
+  const { t } = useLanguage()
+
   const features = [
     {
-      title: "Explorador de Mercado",
-      description: "Visualiza inventario industrial, oficinas y retail en más de 25 ciudades.",
+      title: t("features.marketExplorer.title"),
+      description: t("features.marketExplorer.description"),
       icon: <Map className="h-8 w-8 text-primary" />,
       className: "md:col-span-2",
       delay: 0.1,
     },
     {
-      title: "Analytics Avanzados",
-      description: "Dashboards interactivos con tasas de absorción y precios.",
+      title: t("features.advancedAnalytics.title"),
+      description: t("features.advancedAnalytics.description"),
       icon: <BarChart3 className="h-8 w-8 text-primary" />,
       className: "md:col-span-1",
       delay: 0.2,
     },
     {
-      title: "Reportes Automatizados",
-      description: "Genera comparables (CMAs) y fichas técnicas en PDF con un clic.",
+      title: t("features.automatedReports.title"),
+      description: t("features.automatedReports.description"),
       icon: <FileText className="h-8 w-8 text-primary" />,
       className: "md:col-span-1",
       delay: 0.3,
     },
     {
-      title: "Directorio de Contactos",
-      description: "Base de datos de top propietarios y brokers.",
+      title: t("features.contactDirectory.title"),
+      description: t("features.contactDirectory.description"),
       icon: <Search className="h-8 w-8 text-primary" />,
       className: "md:col-span-2",
       delay: 0.4,
     },
     {
-      title: "Pipeline de Desarrollo",
-      description: "Monitorea obras en construcción y tiempos de entrega.",
+      title: t("features.developmentPipeline.title"),
+      description: t("features.developmentPipeline.description"),
       icon: <Building2 className="h-8 w-8 text-primary" />,
       className: "md:col-span-1",
       delay: 0.5,
     },
     {
-      title: "Tendencias de Mercado",
-      description: "Indicadores predictivos y análisis de demanda.",
+      title: t("features.marketTrends.title"),
+      description: t("features.marketTrends.description"),
       icon: <ArrowUpRight className="h-8 w-8 text-primary" />,
       className: "md:col-span-1",
       delay: 0.6,
     },
     {
-       title: "API Integration",
-       description: "Conecta Dataz con tu CRM o ERP.",
+       title: t("features.apiIntegration.title"),
+       description: t("features.apiIntegration.description"),
        icon: <Database className="h-8 w-8 text-primary" />,
        className: "md:col-span-1",
        delay: 0.7,
@@ -67,7 +68,7 @@ export function Features() {
            viewport={{ once: true }}
            className="inline-block rounded-full px-3 py-1 text-sm font-medium bg-primary/10 text-primary mb-2"
         >
-            Potencia tu Análisis
+            {t("features.badge")}
         </motion.div>
         <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +77,7 @@ export function Features() {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold tracking-tighter"
         >
-            Todo lo que necesitas para <span className="text-gradient">cerrar tratos</span>
+            {t("features.titlePrefix")}<span className="text-gradient">{t("features.titleHighlight")}</span>
         </motion.h2>
         <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -85,7 +86,7 @@ export function Features() {
             transition={{ delay: 0.2 }}
             className="max-w-[700px] text-muted-foreground text-lg sm:text-xl/relaxed"
         >
-          Nuestra tecnología agiliza tu proceso de investigación y comercialización con herramientas diseñadas para expertos.
+          {t("features.description")}
         </motion.p>
       </div>
 
