@@ -52,7 +52,7 @@ export default function PropertyMarkers({ properties }: { properties: Property[]
     }
   }, [properties, map, Leaflet])
 
-  if (!customIcon || !Leaflet) return null;
+  if (!customIcon || !Leaflet || !Array.isArray(properties)) return null;
 
   return (
     <>

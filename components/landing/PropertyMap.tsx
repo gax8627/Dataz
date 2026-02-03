@@ -26,7 +26,8 @@ const PropertyMarkers = dynamic(
 
 export function PropertyMap() {
   const { t } = useLanguage()
-  const [properties, setProperties] = useState([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [properties, setProperties] = useState<any[]>([])
   const [market, setMarket] = useState("all")
   const [loading, setLoading] = useState(true)
 
@@ -36,9 +37,15 @@ export function PropertyMap() {
         const url = market === "all" ? "/api/properties" : `/api/properties?market=${market}`
         const res = await fetch(url)
         const data = await res.json()
-        setProperties(data)
+        if (Array.isArray(data)) {
+          setProperties(data)
+        } else {
+            console.error("API returned non-array data:", data)
+            setProperties([])
+        }
       } catch (err) {
         console.error("Failed to fetch properties:", err)
+        setProperties([])
       } finally {
         setLoading(false)
       }
