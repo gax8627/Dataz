@@ -7,7 +7,8 @@ export async function GET(request: Request) {
     const market = searchParams.get("market")
     const source = searchParams.get("source")
 
-    const properties = await prisma.property.findMany({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const properties = await (prisma as any).property.findMany({
       where: {
         ...(market && { market }),
         ...(source && { source }),
@@ -24,6 +25,17 @@ export async function GET(request: Request) {
   }
 }
 
+interface PropertyInput {
+  source: string
+  externalId?: string
+  latitude: string | number
+  longitude: string | number
+  totalArea: string | number
+  availableArea: string | number
+  address?: string
+  market: string
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -33,18 +45,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid properties data" }, { status: 400 })
     }
 
-    // Bulk update approach: for simplicity, we'll just create many
-    // In a real scenario, we might want to use upsert or transaction
     const createdProperties = await prisma.$transaction(
-      properties.map((p: any) =>
-        prisma.property.create({
+      properties.map((p: PropertyInput) =>
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (prisma as any).property.create({
           data: {
             source: p.source,
             externalId: p.externalId,
-            latitude: parseFloat(p.latitude),
-            longitude: parseFloat(p.longitude),
-            totalArea: parseFloat(p.totalArea),
-            availableArea: parseFloat(p.availableArea),
+            latitude: typeof p.latitude === 'string' ? parseFloat(p.latitude) : p.latitude,
+            longitude: typeof p.longitude === 'string' ? parseFloat(p.longitude) : p.longitude,
+            totalArea: typeof p.totalArea === 'string' ? parseFloat(p.totalArea) : p.totalArea,
+            availableArea: typeof p.availableArea === 'string' ? parseFloat(p.availableArea) : p.availableArea,
             address: p.address,
             market: p.market,
           },

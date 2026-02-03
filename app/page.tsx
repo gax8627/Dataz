@@ -1,7 +1,8 @@
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
+import dynamic from "next/dynamic";
 import { Solutions } from "@/components/landing/Solutions";
-import { PropertyMap } from "@/components/landing/PropertyMap";
+const PropertyMap = dynamic(() => import("@/components/landing/PropertyMap").then(mod => mod.PropertyMap), { ssr: false })
 import { Pricing } from "@/components/landing/Pricing";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";

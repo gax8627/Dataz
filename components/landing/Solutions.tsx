@@ -1,5 +1,8 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Check, ArrowRight } from "lucide-react"
+
 import { motion } from "framer-motion"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 

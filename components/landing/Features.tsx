@@ -1,3 +1,5 @@
+"use client"
+
 import { motion } from "framer-motion"
 import { BarChart3, Building2, Map, Search, FileText, ArrowUpRight, Database } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"

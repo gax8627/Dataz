@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
-import { PropertyAdminContent } from "@/components/admin/PropertyAdminContent"
+import { PropertyAdminContent, Property } from "@/components/admin/PropertyAdminContent"
 
 export default async function PropertyAdminPage() {
   const session = await getServerSession(authOptions)
@@ -11,15 +11,13 @@ export default async function PropertyAdminPage() {
     // redirect("/dashboard")
   }
 
-  const properties = await prisma.property.findMany({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const properties = await (prisma as any).property.findMany({
     orderBy: { updatedAt: 'desc' },
     take: 50
   })
 
-  // Convert Date to string for client component if needed, 
-  // but next.js usually handles this if they are simple objects.
-  // We'll cast to any as a quick fix for the Prisma type lint if it persists.
   return (
-    <PropertyAdminContent properties={properties as any} />
+    <PropertyAdminContent properties={properties as Property[]} />
   )
 }

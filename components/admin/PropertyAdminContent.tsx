@@ -7,7 +7,7 @@ import Link from "next/link"
 import { ImportTool } from "@/components/admin/ImportTool"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 
-interface Property {
+export interface Property {
   id: string
   source: string
   market: string

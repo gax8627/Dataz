@@ -1,25 +1,9 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Marker, Popup, useMap } from "react-leaflet"
-import L from "leaflet"
 import { Building2, MapPin } from "lucide-react"
 import { renderToStaticMarkup } from "react-dom/server"
-
-// Fix for default marker icon issues in Next.js
-const customIcon = L.divIcon({
-  html: renderToStaticMarkup(
-    <div className="relative flex items-center justify-center">
-      <div className="absolute w-8 h-8 bg-primary rounded-full opacity-20 animate-ping" />
-      <div className="relative w-6 h-6 bg-primary rounded-full border-2 border-background shadow-lg flex items-center justify-center">
-        <MapPin className="h-3 w-3 text-white" />
-      </div>
-    </div>
-  ),
-  className: "custom-marker-icon",
-  iconSize: [24, 24],
-  iconAnchor: [12, 12],
-})
 
 interface Property {
   id: string
@@ -34,13 +18,41 @@ interface Property {
 
 export default function PropertyMarkers({ properties }: { properties: Property[] }) {
   const map = useMap()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [Leaflet, setLeaflet] = useState<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [customIcon, setCustomIcon] = useState<any>(null)
 
   useEffect(() => {
-    if (properties.length > 0) {
-      const bounds = L.latLngBounds(properties.map(p => [p.latitude, p.longitude]))
+    (async () => {
+      const L = await import("leaflet")
+      setLeaflet(L.default || L)
+
+      const icon = (L.default || L).divIcon({
+        html: renderToStaticMarkup(
+          <div className="relative flex items-center justify-center">
+            <div className="absolute w-8 h-8 bg-primary rounded-full opacity-20 animate-ping" />
+            <div className="relative w-6 h-6 bg-primary rounded-full border-2 border-background shadow-lg flex items-center justify-center">
+              <MapPin className="h-3 w-3 text-white" />
+            </div>
+          </div>
+        ),
+        className: "custom-marker-icon",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+      })
+      setCustomIcon(icon)
+    })()
+  }, [])
+
+  useEffect(() => {
+    if (Leaflet && properties.length > 0) {
+      const bounds = Leaflet.latLngBounds(properties.map((p: Property) => [p.latitude, p.longitude]))
       map.fitBounds(bounds, { padding: [50, 50], maxZoom: 12 })
     }
-  }, [properties, map])
+  }, [properties, map, Leaflet])
+
+  if (!customIcon || !Leaflet) return null;
 
   return (
     <>
